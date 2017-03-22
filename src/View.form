@@ -140,9 +140,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="first_name">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="first_nameActionPerformed"/>
       </Events>
@@ -153,9 +150,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="last_name">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="last_nameActionPerformed"/>
       </Events>
@@ -167,16 +161,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="birth_town">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="birth_townActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="birth_year">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="birth_yearActionPerformed"/>
       </Events>

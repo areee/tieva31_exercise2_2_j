@@ -1,20 +1,40 @@
+
+import java.util.List;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ylhaart
  */
 public class View extends javax.swing.JFrame {
 
+    Population po;
+    List<Person> loadPersons;
+
     /**
      * Creates new form View
      */
     public View() {
         initComponents();
+        po = new Population("UK");
+        Person pe = new Person();
+        loadPersons = Person.loadPersons("people.txt");
+
+        Person first = loadPersons.get(0);
+
+        first_name.setText(first.firstName);
+        last_name.setText(first.lastName);
+        birth_town.setText(first.birthTown);
+        birth_year.setText("" + first.birthYear);
+
+//        for (Person loadPerson : loadPersons) {
+//            String firstName = loadPerson.firstName;
+//            first_name.setText(firstName);
+//        }
     }
 
     /**
@@ -45,7 +65,6 @@ public class View extends javax.swing.JFrame {
 
         jLabel1.setText("First name:");
 
-        first_name.setText("jTextField1");
         first_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 first_nameActionPerformed(evt);
@@ -54,7 +73,6 @@ public class View extends javax.swing.JFrame {
 
         jLabel2.setText("Last name:");
 
-        last_name.setText("jTextField1");
         last_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 last_nameActionPerformed(evt);
@@ -63,14 +81,13 @@ public class View extends javax.swing.JFrame {
 
         jLabel3.setText("Birth town:");
 
-        birth_town.setText("jTextField1");
+        birth_town.setToolTipText("");
         birth_town.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 birth_townActionPerformed(evt);
             }
         });
 
-        birth_year.setText("jTextField1");
         birth_year.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 birth_yearActionPerformed(evt);
@@ -173,27 +190,27 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-        // TODO add your handling code here:
+        Person nextPerson = po.nextPerson();
     }//GEN-LAST:event_nextActionPerformed
 
     private void previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousActionPerformed
-        // TODO add your handling code here:
+        Person previousPerson = po.previousPerson();
     }//GEN-LAST:event_previousActionPerformed
 
     private void first_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_first_nameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_first_nameActionPerformed
 
     private void last_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_last_nameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_last_nameActionPerformed
 
     private void birth_townActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birth_townActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_birth_townActionPerformed
 
     private void birth_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birth_yearActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_birth_yearActionPerformed
 
     /**
