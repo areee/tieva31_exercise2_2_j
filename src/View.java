@@ -14,6 +14,7 @@ public class View extends javax.swing.JFrame {
 
     Population po;
     List<Person> loadPersons;
+    int currentIndex = 0;
 
     /**
      * Creates new form View
@@ -21,20 +22,10 @@ public class View extends javax.swing.JFrame {
     public View() {
         initComponents();
         po = new Population("UK");
-        Person pe = new Person();
+        //Person pe = new Person();
         loadPersons = Person.loadPersons("people.txt");
 
-        Person first = loadPersons.get(0);
-
-        first_name.setText(first.firstName);
-        last_name.setText(first.lastName);
-        birth_town.setText(first.birthTown);
-        birth_year.setText("" + first.birthYear);
-
-//        for (Person loadPerson : loadPersons) {
-//            String firstName = loadPerson.firstName;
-//            first_name.setText(firstName);
-//        }
+        getPerson();
     }
 
     /**
@@ -65,34 +56,11 @@ public class View extends javax.swing.JFrame {
 
         jLabel1.setText("First name:");
 
-        first_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                first_nameActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Last name:");
-
-        last_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                last_nameActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Birth town:");
 
         birth_town.setToolTipText("");
-        birth_town.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                birth_townActionPerformed(evt);
-            }
-        });
-
-        birth_year.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                birth_yearActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Birth year:");
 
@@ -190,28 +158,24 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-        Person nextPerson = po.nextPerson();
+
+        if (currentIndex == loadPersons.size() - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        getPerson();
     }//GEN-LAST:event_nextActionPerformed
 
     private void previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousActionPerformed
-        Person previousPerson = po.previousPerson();
+
+        if (currentIndex == 0) {
+            currentIndex = loadPersons.size() - 1;
+        } else {
+            currentIndex--;
+        }
+        getPerson();
     }//GEN-LAST:event_previousActionPerformed
-
-    private void first_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_first_nameActionPerformed
-
-    }//GEN-LAST:event_first_nameActionPerformed
-
-    private void last_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_last_nameActionPerformed
-
-    }//GEN-LAST:event_last_nameActionPerformed
-
-    private void birth_townActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birth_townActionPerformed
-
-    }//GEN-LAST:event_birth_townActionPerformed
-
-    private void birth_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birth_yearActionPerformed
-
-    }//GEN-LAST:event_birth_yearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,4 +228,13 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JMenuItem previous;
     private javax.swing.JMenu view;
     // End of variables declaration//GEN-END:variables
+
+    private void getPerson() {
+        Person person = loadPersons.get(currentIndex);
+
+        first_name.setText(person.firstName);
+        last_name.setText(person.lastName);
+        birth_town.setText(person.birthTown);
+        birth_year.setText("" + person.birthYear);
+    }
 }
